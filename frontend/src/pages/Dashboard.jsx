@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { CloudRain, Activity, Leaf, AlertCircle, RefreshCw } from 'lucide-react';
-import { AI_BASE_URL } from '../config';
+import { API_BASE_URL, AI_BASE_URL } from '../config';
 
 const Dashboard = () => {
   const [selectedImage, setSelectedImage] = useState(null);
