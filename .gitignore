@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+target/
+*.class
+.venv/
+venv/
+__pycache__/
+*.pyc
+.idea/
+.vscode/
+
+# Build outputs
+dist/
+build/
+out/
+
+# Database & Uploads
+data/
+uploads/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Misc
+.DS_Store
+*.log

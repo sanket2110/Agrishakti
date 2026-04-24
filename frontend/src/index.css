@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+body {
+  background-color: #f9fafb; /* equivalent to bg-gray-50 */
+  color: #111827; /* equivalent to text-gray-900 */
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/* Google Translate Widget Customizations */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+body {
+  top: 0px !important;
+}
+
+/* =========================================
+   Google Translate Headless Customizations
+   ========================================= */
+
+/* Hide the default Google Translate Widget visually to ensure it still renders in DOM */
+#google_translate_element {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Hide the top translation banner frame (Classic and New) */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame,
+.VIpgJd-Zvi9od-ORHb-OEVmcd,
+.VIpgJd-Zvi9od-aZ2wEe-wOHMyf,
+.VIpgJd-Zvi9od-aZ2wEe-wOHMyf-ti6hGc {
+  display: none !important;
+}
+
+/* Prevent body from shifting down when banner is supposed to show */
+body {
+  top: 0px !important;
+}
+
+/* Hide the hover tooltip popup that shows original text */
+#goog-gt-tt, 
+.goog-te-balloon-frame { 
+  display: none !important; 
+}
+
+/* Remove the yellow highlight when hovering over translated text */
+.goog-text-highlight { 
+  background-color: transparent !important; 
+  box-shadow: none !important; 
+}
+
+/* Hide any skiptranslate iframe injected directly into body */
+iframe.skiptranslate {
+  display: none !important;
+}
