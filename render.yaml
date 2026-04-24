@@ -1,0 +1,42 @@
+services:
+  # 1. Spring Boot Backend
+  - type: web
+    name: agrishakti-backend
+    env: docker
+    dockerContext: ./backend
+    dockerfilePath: Dockerfile
+    plan: free
+    healthCheckPath: /api/products
+    envVars:
+      - key: PORT
+        value: 8080
+
+  # 2. Python AI Module
+  - type: web
+    name: agrishakti-ai
+    env: docker
+    dockerContext: ./ai-module
+    dockerfilePath: Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 8000
+
+  # 3. React Frontend (Static Site)
+  - type: static
+    name: agrishakti-frontend
+    env: node
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    publishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: agrishakti-backend
+          property: host
+      - key: VITE_AI_URL
+        fromService:
+          type: web
+          name: agrishakti-ai
+          property: host
