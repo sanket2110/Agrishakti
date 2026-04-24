@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import LanguageSelector from './components/LanguageSelector';
 import { CartProvider, useCart } from './context/CartContext';
+import { API_BASE_URL } from './config';
 
 // Separate component so useCart can access CartProvider
 function AppContent() {
@@ -54,7 +55,7 @@ function AppContent() {
   const handleDeleteAccount = async () => {
     if (window.confirm("Are you absolutely sure you want to delete your account? This action cannot be undone and all your data (including product listings) will be permanently removed.")) {
       try {
-        await axios.delete(`http://localhost:8080/api/auth/delete/${user.id}`);
+        await axios.delete(`${API_BASE_URL}/api/auth/delete/${user.id}`);
         handleLogout();
         alert("Your account has been successfully deleted.");
       } catch (err) {

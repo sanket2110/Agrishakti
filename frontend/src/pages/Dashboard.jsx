@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { CloudRain, Activity, Leaf, AlertCircle, RefreshCw } from 'lucide-react';
+import { AI_BASE_URL } from '../config';
 
 const Dashboard = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -104,7 +105,7 @@ const Dashboard = () => {
 
     try {
       // Direct call to AI microservice for now, ideally through Backend Gateway
-      const response = await axios.post('http://localhost:8000/predict', formData, {
+      const response = await axios.post(`${AI_BASE_URL}/predict`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       setPrediction(response.data);

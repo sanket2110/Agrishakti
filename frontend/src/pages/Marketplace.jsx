@@ -3,6 +3,7 @@ import { Search, Filter, ShoppingCart, MapPin, Package, Plus, X, CheckCircle } f
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { API_BASE_URL } from '../config';
 
 const Marketplace = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -35,7 +36,7 @@ const Marketplace = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/products');
+      const response = await axios.get(`${API_BASE_URL}/api/products`);
       setProducts(response.data);
       setLoading(false);
     } catch (error) {
@@ -71,7 +72,7 @@ const Marketplace = () => {
         formDataToSend.append('image', selectedFile);
       }
 
-      await axios.post('http://localhost:8080/api/products', formDataToSend, {
+      await axios.post(`${API_BASE_URL}/api/products`, formDataToSend, {
         headers: {
           'Authorization': `Bearer ${user.token}`,
           'Content-Type': 'multipart/form-data'

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import LanguageSelector from '../components/LanguageSelector';
+import { API_BASE_URL } from '../config';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -47,9 +48,9 @@ const Register = () => {
         payload.bankName = formData.bankName;
       }
 
-      await axios.post('http://localhost:8080/api/auth/signup', payload);
+      await axios.post(`${API_BASE_URL}/api/auth/signup`, payload);
       
-      const loginResponse = await axios.post('http://localhost:8080/api/auth/signin', {
+      const loginResponse = await axios.post(`${API_BASE_URL}/api/auth/signin`, {
         username: formData.username,
         password: formData.password
       });

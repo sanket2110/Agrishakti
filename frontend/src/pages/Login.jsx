@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { API_BASE_URL } from '../config';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -16,7 +17,7 @@ const Login = () => {
 
     try {
       // Assuming backend is running on 8080
-      const response = await axios.post('http://localhost:8080/api/auth/signin', {
+      const response = await axios.post(`${API_BASE_URL}/api/auth/signin`, {
         username,
         password
       });
