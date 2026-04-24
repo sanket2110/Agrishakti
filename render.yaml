@@ -2,19 +2,20 @@ services:
   # 1. Spring Boot Backend
   - type: web
     name: agrishakti-backend
-    env: docker
+    runtime: docker
     dockerContext: ./backend
     dockerfilePath: Dockerfile
     plan: free
-    healthCheckPath: /api/products
     envVars:
       - key: PORT
         value: 8080
+      - key: AI_SERVICE_URL
+        value: http://agrishakti-ai:8000/predict
 
   # 2. Python AI Module
   - type: web
     name: agrishakti-ai
-    env: docker
+    runtime: docker
     dockerContext: ./ai-module
     dockerfilePath: Dockerfile
     plan: free
@@ -34,9 +35,4 @@ services:
         fromService:
           type: web
           name: agrishakti-backend
-          property: host
-      - key: VITE_AI_URL
-        fromService:
-          type: web
-          name: agrishakti-ai
           property: host

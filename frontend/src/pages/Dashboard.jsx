@@ -104,9 +104,13 @@ const Dashboard = () => {
     formData.append('file', selectedImage);
 
     try {
-      // Direct call to AI microservice for now, ideally through Backend Gateway
-      const response = await axios.post(`${AI_BASE_URL}/predict`, formData, {
-        headers: { 'Content-Type': 'multipart/form-data' }
+      // Route AI requests through our Backend Gateway to handle CORS and service connectivity
+      const user = JSON.parse(localStorage.getItem('user'));
+      const response = await axios.post(`${API_BASE_URL}/api/ai/predict`, formData, {
+        headers: { 
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${user?.token}`
+        }
       });
       setPrediction(response.data);
     } catch (error) {
