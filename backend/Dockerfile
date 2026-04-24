@@ -10,5 +10,7 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:17-jre
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
+# Ensure data directory exists for H2 persistence
+RUN mkdir -p /app/data && chmod 777 /app/data
 # Limit memory to stay within Render's free tier (512MB) and use the assigned PORT
 CMD java -Xmx384m -Xss512k -Dserver.port=${PORT} -jar app.jar

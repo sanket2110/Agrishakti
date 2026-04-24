@@ -10,7 +10,7 @@ services:
       - key: PORT
         value: 8080
       - key: AI_SERVICE_URL
-        value: http://agrishakti-ai:8000/predict
+        value: http://agrishakti-ai:8000/api/ai/predict
 
   # 2. Python AI Module
   - type: web
