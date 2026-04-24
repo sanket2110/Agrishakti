@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { ShoppingCart, User as UserIcon, Trash2, ChevronDown, LogOut } from 'lucide-react';
 import Dashboard from './pages/Dashboard';
