@@ -10,5 +10,5 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:17-jre
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
-EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Limit memory to stay within Render's free tier (512MB) and use the assigned PORT
+CMD java -Xmx384m -Xss512k -Dserver.port=${PORT} -jar app.jar

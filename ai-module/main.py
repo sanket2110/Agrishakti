@@ -479,9 +479,12 @@ def read_root():
 
 
 if __name__ == "__main__":
+    import os
+    port = int(os.environ.get("PORT", 8000))
     print("=" * 60)
     print("  AGRISHAKTI AI DISEASE DETECTION ENGINE")
     print(f"  Diseases Supported: {len(DISEASE_DATABASE)}")
     print(f"  Mode: {'TensorFlow' if tf_model else ('Computer Vision' if PIL_AVAILABLE else 'Mock')}")
+    print(f"  Port: {port}")
     print("=" * 60)
-    app.run(host="0.0.0.0", port=8000, debug=True)
+    app.run(host="0.0.0.0", port=port, debug=False)
