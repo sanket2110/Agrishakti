@@ -1,0 +1,28 @@
+services:
+  backend:
+    build: ./backend
+    container_name: agrishakti-backend
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./backend/data:/app/data
+      - ./backend/uploads:/app/uploads
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    restart: always
+
+  frontend:
+    build: ./frontend
+    container_name: agrishakti-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: always
+
+  ai-module:
+    build: ./ai-module
+    container_name: agrishakti-ai
+    ports:
+      - "8000:8000"
+    restart: always
