@@ -9,6 +9,7 @@ import com.agrishakti.entity.Role;
 import com.agrishakti.entity.User;
 import com.agrishakti.repository.RoleRepository;
 import com.agrishakti.repository.UserRepository;
+import com.agrishakti.repository.ProductRepository;
 import com.agrishakti.security.jwt.JwtUtils;
 import com.agrishakti.security.services.UserDetailsImpl;
 import jakarta.validation.Valid;

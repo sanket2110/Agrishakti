@@ -1,10 +1,10 @@
 FROM python:3.11-slim
 
-# Install system dependencies for Pillow and OpenCV
+# Install system dependencies for Pillow and image processing
 RUN apt-get update && apt-get install -y \
     libjpeg-dev \
     zlib1g-dev \
-    libgl1-mesa-glx \
+    libgl1 \
     libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
