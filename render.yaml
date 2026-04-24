@@ -3,21 +3,21 @@ services:
   - type: web
     name: agrishakti-backend
     runtime: docker
-    dockerContext: ./backend
-    dockerfilePath: Dockerfile
+    dockerContext: .
+    dockerfilePath: backend/Dockerfile
     plan: free
     envVars:
       - key: PORT
         value: 8080
       - key: AI_SERVICE_URL
-        value: http://agrishakti-ai:8000/api/ai/predict
+        value: http://agrishakti-ai:8000/predict
 
   # 2. Python AI Module
   - type: web
     name: agrishakti-ai
     runtime: docker
-    dockerContext: ./ai-module
-    dockerfilePath: Dockerfile
+    dockerContext: .
+    dockerfilePath: ai-module/Dockerfile
     plan: free
     envVars:
       - key: PORT
